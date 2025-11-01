@@ -3,7 +3,6 @@ import { useRef, useState } from 'react';
 import { ArrowButton } from 'src/ui/arrow-button';
 import { Button } from 'src/ui/button';
 import { Text } from 'src/ui/text';
-import { Spacing } from 'src/ui/spacing';
 import { Select } from 'src/ui/select/Select';
 import {
 	fontFamilyOptions,
@@ -53,6 +52,7 @@ export const ArticleParamsForm = ({
 	return (
 		<>
 			<ArrowButton isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
+
 			<aside
 				className={clsx(styles.container, isOpen && styles.container_open)}
 				ref={rootRef}>
@@ -60,17 +60,18 @@ export const ArticleParamsForm = ({
 					className={styles.form}
 					onSubmit={handleSubmit}
 					onReset={handleReset}>
+
 					<Text as='h2' size={38} weight={800} uppercase dynamicLite>
 						Задайте параметры
 					</Text>
-					<Spacing space='medium' />
+
 					<Select
 						selected={selectedState.fontFamilyOption}
 						options={fontFamilyOptions}
 						title="Шрифт"
 						onChange={(value) => setSelectedState((prev) => ({ ...prev, fontFamilyOption: value}))}
 					/>
-					<Spacing space='medium' />
+
 					<RadioGroup
 						name='article-language'
 						options={fontSizeOptions}
@@ -78,33 +79,35 @@ export const ArticleParamsForm = ({
 						onChange={(value) => setSelectedState((prev) => ({ ...prev, fontSizeOption:value}))}
 						title='Размер шрифта'
 					/>
-					<Spacing space='medium' />
+
 					<Select
 						selected={selectedState.fontColor}
 						options={fontColors}
 						title='Цвет шрифта'
 						onChange={(value) => setSelectedState((prev) => ({ ...prev, fontColor: value}))}
 					/>
-					<Spacing space='medium' />
+
 					<Separator />
-					<Spacing space='medium' />
+
 					<Select
 						selected={selectedState.backgroundColor}
 						options={backgroundColors}
 						title=''
 						onChange={(value) => setSelectedState((prev) => ({ ...prev, backgroundColor: value}))}
 					/>
-					<Spacing space='medium' />
+
 					<Select
 						selected={selectedState.contentWidth}
 						options={contentWidthArr}
 						title='Ширина контента'
 						onChange={(value) => setSelectedState((prev) => ({ ...prev, contentWidth: value}))}
 					/>
+
 					<div className={styles.bottomContainer}>
 						<Button title='Сбросить' htmlType='reset' type='clear' />
 						<Button title='Применить' htmlType='submit' type='apply' />
 					</div>
+					
 				</form>
 			</aside>
 		</>
